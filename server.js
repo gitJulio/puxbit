@@ -1,22 +1,23 @@
-var express = require('express')
-var app = express()
+require('./server/config');
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
 
-app.use(express.static( __dirname+'/public'));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
-// app.get('/', function (req, res) {
-//   let salida={
-//     nombre:"Julio",
-//     apellido:"Bueso",
-//     edad:30,
-//     url:"/"
-//   }
-//   res.send(salida)
-// })
 
-app.get('/data', function (req,res){
-  res.send("Hola Data")
+app.use(express.static( __dirname+'../public'));
+
+
+app.get('/usuario/:id', function (req,res){
+
+  let id=req.params.id;
+  res.json({id})
 });
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT , ()=>{
   console.log("Escuchando peticiones en el puerto 3000");
 })
