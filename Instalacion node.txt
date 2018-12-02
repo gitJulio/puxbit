@@ -1,0 +1,11 @@
+1) --- npm init
+2) --- npm install express --save
+3) --- npm install body-parser --save // lo instalamos para obtener información post.
+4) --- Copiamos de la pagina de body-parser y pegarla abajo del body-parser----
+	// parse application/x-www-form-urlencoded
+	app.use(bodyParser.urlencoded({ extended: false }))
+ 
+	// parse application/json
+	app.use(bodyParser.json())
+
+/////https://www.udemy.com/node-de-cero-a-experto/learn/v4/t/lecture/9609086?start=0
